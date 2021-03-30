@@ -3,6 +3,7 @@
 
 var tbody = d3.select("tbody");
 
+// view table 
 data.forEach((ufo_info) => {
     var row = tbody.append("tr");
     Object.entries(ufo_info).forEach(([key, value]) => {
@@ -20,30 +21,29 @@ var form = d3.select("#form");
 // Create event handlers 
 button.on("click", runEnter);
 
-
 // Complete the event handler function for the form
 function runEnter() {
 
-//   // Prevent the page from refreshing
+// Prevent the page from refreshing
   d3.event.preventDefault();
   
-//   // Select the input element and get the raw HTML node
+// Select the input element and get the raw HTML node
   var inputElement = d3.select("#datetime");
 
-//   // Get the value property of the input element
+// Get the value property of the input element
   var inputValue = inputElement.property("value");
 
-  // console.log(inputValue);
-//   console.log(tableData);
+// console.log(inputValue);
+// console.log(tableData);
 
   var filteredData = data.filter(ufo => ufo.datetime === inputValue);
 
-  // console.log(filteredData);
-
+// console.log(filteredData);
  
- // remove any children from the list to
+ // remove any children from the list
  tbody.html("");
 
+ // view table after date selected
 filteredData.forEach((ufo_info) => {
   var row = tbody.append("tr");
   Object.entries(ufo_info).forEach(([key, value]) => {
